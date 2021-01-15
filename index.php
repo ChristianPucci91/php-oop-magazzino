@@ -17,39 +17,47 @@
 
       <?php
 
-       class Magazzino {
+      class Magazzino {
+          public $name;
+          public $location;
+          public $products  = [];
+          public function __construct($name,$location) {
+              $this -> name = $name;
+              $this -> location = $location;
+          }
+          public function test(){
+            echo "Nome: ". $this -> name;
+            echo "<br>";
+            echo "Location: ". $this -> location;
+            echo "<br>";
+          }
+      }
 
-         public $name;
-         public $location;
-         public $products  = [
+      class Prodotto {
+          public $name;
+          public $quantity;
+          public function __construct($name,$quantity) {
+              $this -> name = $name;
+              $this -> quantity = $quantity;
+          }
+      }
 
-				  [
-					 'name' => 'Scarpe',
-					 'quantity' => '1'
-				  ],
-          [
-           'name' => 'Giacche',
-           'quantity' => '2'
-          ],
-          [
-           'name' => 'Pantaloni',
-           'quantity' => '3'
-          ]
+      $magazzino = new Magazzino("Magazzino_Abbigliamento","Roma");
+      $magazzino -> test();
+      // $magazzino->products[] = new Prodotto('Scarpe', 1);
+      // $magazzino->products[] = new Prodotto('Giacche', 2);
+      // $magazzino->products[] = new Prodotto('Pantaloni', 3);
+      $magazzino2 = new Magazzino("Magazzino_Supermercato","Milano");
+      $magazzino2 -> test();
+      // $magazzino->products[] = new Prodotto('Latte', 1);
+      // $magazzino->products[] = new Prodotto('Pane', 2);
+      // $magazzino->products[] = new Prodotto('Pasta', 3);
 
-        ];
-         public function __construct($name,$location) {
-
-           $this -> name = $name;
-           $this -> location = $location;
-
-         }
-
-       }
-
-       $magazzino = new Magazzino("Magazzino_Abbigliamento","Roma");
-
-       var_dump($magazzino);
-       var_dump($magazzino['name']['quantity']);
+       //
+       // var_dump($magazzino);
+       // var_dump($magazzino['name']['quantity']);
+       // var_dump($magazzino2);
+       // var_dump($magazzino2['name']['quantity']);
 
        ?>
 

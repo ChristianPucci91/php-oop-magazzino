@@ -29,6 +29,7 @@
       class Prodotto {
           public $name;
           public $weight;
+          public $price;
           public function __construct($name,$weight,$price = 'Prezzo non disponibile') {
               $this -> name = $name;
               $this -> weight = $weight;

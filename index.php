@@ -3,7 +3,7 @@
   <head>
     <meta charset="utf-8">
     <link rel="stylesheet" href="style.css">
-    <title>Php oop</title>
+    <title>Php oop - Christian Pucci</title>
   </head>
   <body>
 
@@ -12,8 +12,6 @@
                 - Magazzino: definire gli attributi per nome, location e prodotti contenuti (array); definire inoltre costruttore con solo nome e location obbligatori.
 
                 - Prodotto: definire gli attributi per nome, peso e prezzo -->
-
-    <div class="container">
 
       <?php
 
@@ -25,43 +23,61 @@
               $this -> name = $name;
               $this -> location = $location;
           }
-          public function test(){
-            echo "Nome: ". $this -> name;
-            echo "<br>";
-            echo "Location: ". $this -> location;
-            echo "<br>";
-          }
+
       }
 
       class Prodotto {
           public $name;
-          public $quantity;
-          public function __construct($name,$quantity) {
+          public $weight;
+          public function __construct($name,$weight,$price) {
               $this -> name = $name;
-              $this -> quantity = $quantity;
+              $this -> weight = $weight;
+              $this -> price = $price;
           }
+
       }
 
-      $magazzino = new Magazzino("Magazzino_Abbigliamento","Roma");
-      $magazzino -> test();
-      // $magazzino->products[] = new Prodotto('Scarpe', 1);
-      // $magazzino->products[] = new Prodotto('Giacche', 2);
-      // $magazzino->products[] = new Prodotto('Pantaloni', 3);
-      $magazzino2 = new Magazzino("Magazzino_Supermercato","Milano");
-      $magazzino2 -> test();
-      // $magazzino->products[] = new Prodotto('Latte', 1);
-      // $magazzino->products[] = new Prodotto('Pane', 2);
-      // $magazzino->products[] = new Prodotto('Pasta', 3);
+      $magazzino = new Magazzino("Abbigliamento","Roma");
 
-       //
-       // var_dump($magazzino);
-       // var_dump($magazzino['name']['quantity']);
-       // var_dump($magazzino2);
-       // var_dump($magazzino2['name']['quantity']);
+      $magazzino->products[] = new Prodotto('Scarpe', 1,10);
+      $magazzino->products[] = new Prodotto('Giacche', 2,20);
+      $magazzino->products[] = new Prodotto('Pantaloni', 3,30);
+
+      $magazzino2 = new Magazzino("Supermercato","Milano");
+
+      $magazzino2->products[] = new Prodotto('Latte', 1,10);
+      $magazzino2->products[] = new Prodotto('Pane', 2,20);
+      $magazzino2->products[] = new Prodotto('Pasta', 3,30);
 
        ?>
 
-    </div>
+       <div class="container">
+
+        <?php
+
+          ?>
+
+            <div class="box"><?php echo "Nome magazzino: "." ". $magazzino -> name; ?></div>
+            <div class="box"><?php echo "Location magazzino: " ." ". $magazzino -> location; ?></div>
+            <div class="box"><?php  foreach ($magazzino->products as $key => $value) {
+              ?>
+
+               <ul>
+
+                 <li> <?php echo "Nome prodotto :"." ".$value -> name; ?></li>
+                 <li> <?php echo "Peso prodotto :"." ".$value -> weight. " Kg"; ?></li>
+                 <li> <?php echo "Prezzo prodotto :"." ".$value -> price. " €"; ?></li>
+
+               </ul>
+
+               <?php
+            } ?></div>
+
+          <?php
+
+        ?>
+      </div>
+
 
   </body>
 </html>

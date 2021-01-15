@@ -29,7 +29,7 @@
       class Prodotto {
           public $name;
           public $weight;
-          public function __construct($name,$weight,$price) {
+          public function __construct($name,$weight,$price = 'Prezzo non disponibile') {
               $this -> name = $name;
               $this -> weight = $weight;
               $this -> price = $price;
@@ -45,37 +45,55 @@
 
       $magazzino2 = new Magazzino("Supermercato","Milano");
 
-      $magazzino2->products[] = new Prodotto('Latte', 1,10);
-      $magazzino2->products[] = new Prodotto('Pane', 2,20);
-      $magazzino2->products[] = new Prodotto('Pasta', 3,30);
+      $magazzino2->products[] = new Prodotto('Latte', 1,1);
+      $magazzino2->products[] = new Prodotto('Pane', 2,2);
+      $magazzino2->products[] = new Prodotto('Pasta', 3);
 
        ?>
 
        <div class="container">
 
-        <?php
+        <div class="table"> <!-- Magazzino 1 -->
 
-          ?>
+          <div class="box"><?php echo "Nome magazzino: "." ". $magazzino -> name; ?></div>
+          <div class="box"><?php echo "Location magazzino: " ." ". $magazzino -> location; ?></div>
+          <div class="box"><?php  foreach ($magazzino->products as $key => $value) {
+            ?>
 
-            <div class="box"><?php echo "Nome magazzino: "." ". $magazzino -> name; ?></div>
-            <div class="box"><?php echo "Location magazzino: " ." ". $magazzino -> location; ?></div>
-            <div class="box"><?php  foreach ($magazzino->products as $key => $value) {
-              ?>
+             <ul>
 
-               <ul>
+               <li> <?php echo "Nome prodotto :"." ".$value -> name; ?></li>
+               <li> <?php echo "Peso prodotto :"." ".$value -> weight. " Kg"; ?></li>
+               <li> <?php echo "Prezzo prodotto :"." ".$value -> price. " €"; ?></li>
 
-                 <li> <?php echo "Nome prodotto :"." ".$value -> name; ?></li>
-                 <li> <?php echo "Peso prodotto :"." ".$value -> weight. " Kg"; ?></li>
-                 <li> <?php echo "Prezzo prodotto :"." ".$value -> price. " €"; ?></li>
+             </ul>
 
-               </ul>
+             <?php
+          } ?></div>
 
-               <?php
-            } ?></div>
+        </div>
 
-          <?php
+        <div class="table"> <!-- Magazzino 2 -->
 
-        ?>
+          <div class="box"><?php echo "Nome magazzino: "." ". $magazzino2 -> name; ?></div>
+          <div class="box"><?php echo "Location magazzino: " ." ". $magazzino2 -> location; ?></div>
+          <div class="box"><?php  foreach ($magazzino2->products as $key => $value) {
+            ?>
+
+             <ul>
+
+               <li> <?php echo "Nome prodotto :"." ".$value -> name; ?></li>
+               <li> <?php echo "Peso prodotto :"." ".$value -> weight. " Kg"; ?></li>
+               <li> <?php echo "Prezzo prodotto :"." ".$value -> price. " €"; ?></li>
+
+             </ul>
+
+             <?php
+          } ?></div>
+
+        </div>
+
+
       </div>
 
 
